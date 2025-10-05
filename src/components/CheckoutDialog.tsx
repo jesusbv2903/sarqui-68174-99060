@@ -58,7 +58,7 @@ export default function CheckoutDialog({ open, onOpenChange, destination }: Chec
       return;
     }
 
-    if (formData.paymentMethod === "credit_card" && (!formData.cardNumber || !formData.cardHolder)) {
+    if ((formData.paymentMethod === "credit_card" || formData.paymentMethod === "debit_card") && (!formData.cardNumber || !formData.cardHolder || !formData.cardExpiry || !formData.cardCVV)) {
       toast.error(t.checkout.fillCardDetails);
       return;
     }
@@ -87,6 +87,20 @@ export default function CheckoutDialog({ open, onOpenChange, destination }: Chec
 
       toast.success(t.checkout.success, {
         description: t.checkout.successDescription
+      });
+      
+      // Reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        numTravelers: 1,
+        travelDate: "",
+        paymentMethod: "credit_card",
+        cardNumber: "",
+        cardHolder: "",
+        cardExpiry: "",
+        cardCVV: ""
       });
       
       onOpenChange(false);

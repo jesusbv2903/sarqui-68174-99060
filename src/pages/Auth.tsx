@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { toast } from "sonner";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -63,11 +63,21 @@ export default function Auth() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 p-4">
       <Card className="w-full max-w-md animate-fade-in">
-        <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold">
-            {isLogin ? t.auth.login : t.auth.signup}
-          </CardTitle>
-          <CardDescription>
+        <CardHeader>
+          <div className="flex items-center gap-4 mb-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => navigate("/")}
+              className="shrink-0"
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </Button>
+            <CardTitle className="text-3xl font-bold">
+              {isLogin ? t.auth.login : t.auth.signup}
+            </CardTitle>
+          </div>
+          <CardDescription className="text-center">
             {isLogin ? t.auth.loginDescription : t.auth.signupDescription}
           </CardDescription>
         </CardHeader>

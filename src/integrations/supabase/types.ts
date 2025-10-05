@@ -14,7 +14,146 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      destinations: {
+        Row: {
+          created_at: string
+          departure_location: string
+          description: string
+          duration: string
+          full_description: string
+          gallery_urls: string[] | null
+          highlights: string[]
+          id: string
+          image_url: string
+          includes: string[]
+          location: string
+          name: string
+          price: number
+          slug: string
+        }
+        Insert: {
+          created_at?: string
+          departure_location?: string
+          description: string
+          duration: string
+          full_description: string
+          gallery_urls?: string[] | null
+          highlights: string[]
+          id?: string
+          image_url: string
+          includes: string[]
+          location: string
+          name: string
+          price: number
+          slug: string
+        }
+        Update: {
+          created_at?: string
+          departure_location?: string
+          description?: string
+          duration?: string
+          full_description?: string
+          gallery_urls?: string[] | null
+          highlights?: string[]
+          id?: string
+          image_url?: string
+          includes?: string[]
+          location?: string
+          name?: string
+          price?: number
+          slug?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      purchases: {
+        Row: {
+          card_holder: string | null
+          card_number: string | null
+          created_at: string
+          destination_id: string
+          email: string
+          full_name: string
+          id: string
+          num_travelers: number
+          payment_method: string
+          phone: string
+          status: string
+          total_amount: number
+          travel_date: string
+          user_id: string
+        }
+        Insert: {
+          card_holder?: string | null
+          card_number?: string | null
+          created_at?: string
+          destination_id: string
+          email: string
+          full_name: string
+          id?: string
+          num_travelers: number
+          payment_method: string
+          phone: string
+          status?: string
+          total_amount: number
+          travel_date: string
+          user_id: string
+        }
+        Update: {
+          card_holder?: string | null
+          card_number?: string | null
+          created_at?: string
+          destination_id?: string
+          email?: string
+          full_name?: string
+          id?: string
+          num_travelers?: number
+          payment_method?: string
+          phone?: string
+          status?: string
+          total_amount?: number
+          travel_date?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "purchases_destination_id_fkey"
+            columns: ["destination_id"]
+            isOneToOne: false
+            referencedRelation: "destinations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

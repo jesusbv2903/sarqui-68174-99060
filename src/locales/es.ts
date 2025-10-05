@@ -111,7 +111,8 @@ export const es = {
     loginSuccess: "¡Bienvenido de vuelta!",
     signupSuccess: "¡Cuenta creada exitosamente!",
     loginError: "Por favor completa todos los campos",
-    signupError: "Por favor completa todos los campos"
+    signupError: "Por favor completa todos los campos",
+    backButton: "Volver"
   },
   profile: {
     title: "Mi Perfil",
